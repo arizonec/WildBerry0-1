@@ -18,22 +18,10 @@ const renderPosts = () => {
         access_token: token,
         v: 5.131,
       },
-      async (data) => {
+       (data) => {
         if (data.response) {
             let dataList = data.response.items;
-            const html = dataList.map(
-                (p) => `
-                <li class="vk-widget-post">
-                  <div class="vk-widget-post-title">${p.text}</div>
-                  <div class="vk-widget-post-date">${new Date(
-                    p.date * 1000
-                  ).toLocaleDateString()}</div>
-                  <img class=ImgAll src=${p.attachments[0]['photo']?.sizes[4].url}
-                </li>
-              `
-              )
-              .join('');
-              postLists.insertAdjacentHTML('beforeend', html);
+            console.log(dataList);
         }
       }
     );
