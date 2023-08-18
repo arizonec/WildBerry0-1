@@ -1,13 +1,12 @@
-// https://oauth.vk.com/authorize?client_id=51731162&redirect_uri=https://oauth.vk.com/blank.html&display=page&scope=wall,offline&response_type=token
+window.location.href = 'https://oauth.vk.com/authorize?client_id=51731162&redirect_uri=https://arizonec.github.io/WildBerry0-1/&display=page&scope=wall,offline&response_type=token'
+const token = window.location.hash.split("=")[1].split("&")[0];
 
-// https://oauth.vk.com/authorize?client_id=51731162&redirect_uri=https://vk.com/wildberry-widget&display=page&scope=wall,offline&response_type=token
-const token ='vk1.a.HRKYd09NQXnnpP-eGIH0r2HtkwNJGDTwdHaMlwG4G2ijYaa27xbhE5pibkvutXNvxyfcuuPmNpxWn2F0azRQ7wmeUCrWOQCh05fxUc8UIYslVtDKIc6wEKxK7tYlyKwIDuvEzsijV8nMD1beprP34ws_tIdcf_0dW17zzgy_0FZ_adWam64cAlnwjT9MoJvcHAteoCJDFUdISraIL8FdvQ';
-// const token = `vk1.a.7W-1JzuKU8kEGI-1Z6yhfq6phVHTa63TuTse4Ze-Q6UwHSz2sU3iNcvUz7pksgavsf5Y3TRQRVemK5DEht51ikJYNw5ubAinw2x36JK2GFyoZNTIAQ6tAS6J8jl6lwxj2jPLZbVtZiV3XeOmXB15RTjBkWNt1o-FCOs9m7ZS0WzFcG7ahVnBc4DineAbktBuKvg8VlIRSRbiOnHtfnHHtw`;
+const postLists = document.querySelector('.posts-list');
+
 const owner_id = -51873373;
 const version = 5.131;
 const count = 10;
-let offset = +localStorage.getItem("offset") ?? 0;
-
+let offset = 0;
 
 const renderPosts = () => {
     VK.Api.call(
@@ -21,12 +20,22 @@ const renderPosts = () => {
       },
       async (data) => {
         if (data.response) {
-          offset += 10;
-          console.log(data)
+            let dataList = data.response.items;
+            const html = dataList.map(
+                (p) => `
+                <li class="vk-widget-post">
+                  <div class="vk-widget-post-title">${p.text}</div>
+                  <div class="vk-widget-post-date">${new Date(
+                    p.date * 1000
+                  ).toLocaleDateString()}</div>
+                  <img class=ImgAll src=${p.attachments[0]['photo']?.sizes[4].url}
+                </li>
+              `
+              )
+              .join('');
+              postLists.insertAdjacentHTML('beforeend', html);
         }
       }
     );
   };
-
-
 renderPosts();
