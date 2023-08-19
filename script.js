@@ -50,6 +50,7 @@ function loadPosts() { //! объявляем функцию загрузки п
   });
 }
 
+loadPosts();
 
 const options = {
     threshold: 0,
@@ -63,7 +64,7 @@ const options = {
 //     })
 // });
 
-function callback(posts, observer) {
+const callback = function(posts, observer) {
     posts.forEach(post => {
         if(post.isIntersecting) {
             loadPosts();
@@ -74,4 +75,3 @@ function callback(posts, observer) {
 const observer = new IntersectionObserver(callback, options);
 
 observer.observe(document.querySelector('.vk-widget-post:last-child'))
-loadPosts();
