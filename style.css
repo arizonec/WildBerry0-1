@@ -1,15 +1,19 @@
 body {
-    background-color: blue;
+    background-color: antiquewhite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .vk-widget {
     width: 50vw;
     height: 80vh;
-    border: 1px solid #ccc;
+    border: 1px solid gray;
     overflow: hidden;
     position: relative;
     margin: 30px 0px 0px 30px;
     overflow-y: scroll;
+    background-color: darkslateblue;
   }
   
   .vk-widget-posts {
@@ -17,6 +21,7 @@ body {
     margin: 0;
     padding: 0;
     position: absolute;
+    border: gray;
     top: 0;
     left: 0;
     width: 100%;
@@ -24,6 +29,7 @@ body {
   }
   
   .vk-widget-post {
+    background: white;
     border-bottom: 1px solid #ccc;
     padding: 10px;
   }
