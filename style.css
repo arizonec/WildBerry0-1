@@ -38,6 +38,8 @@ body {
   .vk-widget-post-title {
     font-size: 20px;
     font-weight: bold;
+    height: 200px;
+    overflow: scroll;
   }
   
   .vk-widget-post-date {
