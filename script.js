@@ -1,9 +1,5 @@
 // window.location.href = 'https://!oauth.vk.com/authorize?client_id=51732152&display=page&redirect_uri=https://!arizonec.github.io/WildBerry0-1/&scope=wall&response_type=token&v=5.131&state=123456'
 const token = window.location.hash.split("=")[1].split("&")[0];
-const linker = document.querySelector('.linker');
-
-// vk1.a.YIeH9oxXZZ_F5S6Rkqyw2ujio4lG53vgZX8VwB1e8zpvVmgObAIVa11eedRLVjSBD79-F3bKoV0KytbyJiUfuh9ivbwUSuzv-IhKq_VZVE8K5tXvt1JSTeAtnC9SXMILtfYnHVN2n95b0ABQvJiRPiFEE33j-F3JgfZw9EUcbbuSc6WDKnO1eWU2ceVgbcSX
-
 
 //! Установим области и переменные для работы виджета
 const widget = document.querySelector('.vk-widget'); //! нашёл блок виджета
