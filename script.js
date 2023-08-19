@@ -1,4 +1,4 @@
-window.location.href = 'https://oauth.vk.com/authorize?client_id=51732012&redirect_uri=https://arizonec.github.io/WildBerry0-1&scope=wall&response_type=token&v=5.131&state=12345'
+window.location.href = 'https://oauth.vk.com/authorize?client_id=51732012&redirect_uri=https://oauth.vk.com/blank.html&scope=wall&response_type=token&v=5.131&state=12345'
 const token = window.location.hash.split("=")[1].split("&")[0];
 
 const owner_id = -51873373;
