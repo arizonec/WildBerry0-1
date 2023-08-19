@@ -14,13 +14,16 @@ body {
     overflow-y: scroll;
     background-color: darkslateblue;
     padding: 10px;
+    overflow-y: scroll;
   }
   
   .vk-widget-posts {
     list-style: none;
     position: absolute;
+    margin: 0;
+    padding: 0;
     left: 0;
-    top: 0s;
+    top: 0;
     border: 1px solid gray;
     width: 100%;
     height: 100%;
