@@ -9,39 +9,40 @@ let posts = []; //! массив постов для кэширования
 
 //! Загрузка постов из VK API
 function loadPosts() { //! объявляем функцию загрузки постов
-  const count = 10; //! количество постов для загрузки
+    const count = 10; //! количество постов для загрузки
 
-  VK.Api.call('wall.get', { //! запрос использует ключевые слова VK.Api.call для вызова метода получения постов первый аргумент это метод вызова второй параметры
-    owner_id: -41152133,
-    domain: 'spacex', 
-    count: count,
-    offset: offset,
-    access_token: token,
-    v: 5.131
+    VK.Api.call('wall.get', { //! запрос использует ключевые слова VK.Api.call для вызова метода получения постов первый аргумент это метод вызова второй параметры
+        owner_id: -41152133,
+        domain: 'spacex',
+        count: count,
+        offset: offset,
+        access_token: token,
+        v: 5.131
     }, (r) => { //! обрабатываем ответ от апи
-    if (r.response) { //! проверка пришло ли нам что либо
-      const newPosts = r.response.items; //! задаём как массив объектов пришедший с апи
-      const html = newPosts //! создаём новый массив при помощи метода map который вернёт нам вёрстку новых элементов для дальнейших действий
-        .map(
-          (p) => `
+        if (r.response) { //! проверка пришло ли нам что либо
+            const newPosts = r.response.items; //! задаём как массив объектов пришедший с апи
+            const html = newPosts //! создаём новый массив при помощи метода map который вернёт нам вёрстку новых элементов для дальнейших действий
+                .map(
+                    (p) => `
           <li class="vk-widget-post">
             <div class="vk-widget-post-title">${p.text}</div>
             <div class="vk-widget-post-date">${new Date(
-              p.date * 1000
-            ).toLocaleDateString()}</div>
+                        p.date * 1000
+                    ).toLocaleDateString()}</div>
             <img class=ImgAll src=${p.attachments[0]['photo']?.sizes[4].url}
           </li>
         `
-        )
-        .join(''); //! соединяем верстку
-      postsList.insertAdjacentHTML('beforeend', html); //! добавляем посты в список
+                )
+                .join(''); //! соединяем верстку
+            postsList.insertAdjacentHTML('beforeend', html); //! добавляем посты в список
 
-      posts = posts.concat(newPosts); //! добавляем посты в массив для кэширования
-      offset += count; //! увеличиваем смещение
-      observer.observe(document.querySelector('.vk-widget-post:last-child')) //! Устанавливаем слежку за последним элементом
-    }
-  });
+            posts = posts.concat(newPosts); //! добавляем посты в массив для кэширования
+            offset += count; //! увеличиваем смещение
+            observer.observe(document.querySelector('.vk-widget-post:last-child')) //! Устанавливаем слежку за последним элементом
+        }
+    });
 }
 
 
 
+loadPosts();
