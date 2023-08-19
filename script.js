@@ -1,7 +1,8 @@
 // window.location.href = 'https://!oauth.vk.com/authorize?client_id=51732152&display=page&redirect_uri=https://!arizonec.github.io/WildBerry0-1/&scope=wall&response_type=token&v=5.131&state=123456'
 const token = window.location.hash.split("=")[1].split("&")[0];
 const linker = document.querySelector('.linker');
-linker.innerHTML = token;
+
+// vk1.a.YIeH9oxXZZ_F5S6Rkqyw2ujio4lG53vgZX8VwB1e8zpvVmgObAIVa11eedRLVjSBD79-F3bKoV0KytbyJiUfuh9ivbwUSuzv-IhKq_VZVE8K5tXvt1JSTeAtnC9SXMILtfYnHVN2n95b0ABQvJiRPiFEE33j-F3JgfZw9EUcbbuSc6WDKnO1eWU2ceVgbcSX
 
 
 //! Установим области и переменные для работы виджета
@@ -30,9 +31,17 @@ function loadPosts() { //! объявляем функцию загрузки п
           <li class="vk-widget-post">
             <div class="vk-widget-post-title">${p.text}</div>
             <img class=ImgAll src=${p.attachments[0]['photo']?.sizes[4].url}
+            <div class='vk-widget-statistics'>
+            <div class='likes'>
+            Нравится: ${p.likes.count}
+            </div>
+            <div class='comments'></div>
+            Комментарии: ${p.comments.count}
+            </div>
             <div class="vk-widget-post-date">${new Date(
                 p.date * 1000
-              ).toLocaleDateString()}</div>
+              ).toLocaleDateString()}
+            </div>
           </li>
         `
         )

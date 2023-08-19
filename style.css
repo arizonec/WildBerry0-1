@@ -45,6 +45,16 @@ body {
     font-size: 14px;
     color: #999;
     margin-inline: auto;
+    margin-bottom: 5px;
+  }
+
+  .vk-widget-statistics {
+    padding: 2px;
+    display: flex;
+  }
+
+  .likes {
+    margin-right: 10px;
   }
 
   .ImgAll {
