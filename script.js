@@ -45,19 +45,33 @@ function loadPosts() { //! объявляем функцию загрузки п
       postsList.insertAdjacentHTML('beforeend', html); //! добавляем посты в список
 
       posts = posts.concat(newPosts); //! добавляем посты в массив для кэширования
-      offset += count; //! увеличиваем смещение
-      observer.observe(document.querySelector('.vk-widget-post:last-child')) //! Устанавливаем слежку за последним элементом
+      offset += count; //! увеличиваем смещение //! Устанавливаем слежку за последним элементом
     }
   });
 }
 
-const observer = new IntersectionObserver(posts => {
+
+const options = {
+    threshold: 0,
+}
+
+// const observer = new IntersectionObserver(posts => {
+//     posts.forEach(post => {
+//         if(post.isIntersecting) {
+//             loadPosts();
+//         }
+//     })
+// });
+
+function callback(posts, observer) {
     posts.forEach(post => {
         if(post.isIntersecting) {
             loadPosts();
         }
     })
-});
+}
 
+const observer = new IntersectionObserver(callback, options);
 
+observer.observe(document.querySelector('.vk-widget-post:last-child'))
 loadPosts();
