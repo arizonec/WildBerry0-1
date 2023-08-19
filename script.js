@@ -74,4 +74,6 @@ const callback = function(posts, observer) {
 
 const observer = new IntersectionObserver(callback, options);
 
-observer.observe(document.querySelector('.vk-widget-post:last-child'))
+const element = document.querySelector('.vk-widget-post:last-child');
+
+observer.observe(element);
