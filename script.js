@@ -38,7 +38,6 @@ function loadPosts() { //! объявляем функцию загрузки п
 
             posts = posts.concat(newPosts); //! добавляем посты в массив для кэширования
             offset += count; //! увеличиваем смещение
-            observer.observe(document.querySelector('.vk-widget-post:last-child')) //! Устанавливаем слежку за последним элементом
         }
     });
 }
