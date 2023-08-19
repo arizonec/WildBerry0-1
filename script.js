@@ -48,6 +48,7 @@ function loadPosts() { //! объявляем функцию загрузки п
       postsList.insertAdjacentHTML('beforeend', html); //! добавляем посты в список
       posts = posts.concat(newPosts); //! добавляем посты в массив для кэширования
       offset += count; //! увеличиваем смещение //! Устанавливаем слежку за последним элементом
+      observer.observe(document.querySelector('.postsList:last-child'));
     }
   });
 }
@@ -75,5 +76,4 @@ const callback = function(posts, observer) {
 }
 
 const observer = new IntersectionObserver(callback, options);
-observer.observe(loader);
 
