@@ -1,4 +1,4 @@
-window.location.href = 'https://oauth.vk.com/authorize?client_id=51731162&display=page&redirect_uri=https://arizonec.github.io/WildBerry0-1&scope=wall&response_type=token&v=5.131&state=123456'
+window.location.href = 'https://oauth.vk.com/authorize?client_id=51731162&display=page&redirect_uri=https://arizonec.github.io/WildBerry0-1/&scope=wall&response_type=token&v=5.131&state=123456'
 // window.location.href =  'https://oauth.vk.com/authorize?client_id=51729989&display=page&redirect_uri=https://lensorf.github.io/wb-L1-19&scope=wall&response_type=token&v=5.131&state=123456'
 const token = window.location.hash.split("=")[1].split("&")[0];
 
