@@ -20,7 +20,7 @@ const renderPosts = () => {
       },
         (data) => {
             if(data.responce.items) {
-              const newPosts = data.responce.items;
+            //   const newPosts = data.responce.items;
     //           const html = newPosts //! создаём новый массив при помощи метода map который вернёт нам вёрстку новых элементов для дальнейших действий
     //     .map(
     //       (p) => `
