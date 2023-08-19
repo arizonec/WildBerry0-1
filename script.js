@@ -19,8 +19,8 @@ const renderPosts = () => {
         v: 5.131,
       },
         (data) => {
-            if(data.responce) {
-              const newPosts = data.responce.items;
+            if(data.items) {
+              const newPosts = data.items;
               const html = newPosts //! создаём новый массив при помощи метода map который вернёт нам вёрстку новых элементов для дальнейших действий
         .map(
           (p) => `
