@@ -11,11 +11,12 @@ body {
 .widget {
     width: 50vw;
     height: 80vh;
-    border: 1px solid #ccc;
+    border: 1px solid gray;
     overflow: hidden;
     position: relative;
     margin: 30px 0px 0px 30px;
     overflow-y: scroll;
+    padding: 10px;
 }
 .posts-list {
     list-style: none;
@@ -23,6 +24,7 @@ body {
     padding: 0;
     position: absolute;
     top: 0;
+    border: 1px solid gray;
     left: 0;
     width: 100%;
     height: 100%;
