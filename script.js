@@ -46,6 +46,7 @@ function loadPosts() { //! объявляем функцию загрузки п
 
       posts = posts.concat(newPosts); //! добавляем посты в массив для кэширования
       offset += count; //! увеличиваем смещение //! Устанавливаем слежку за последним элементом
+      observer.observe(element);
     }
   });
 }
@@ -75,5 +76,3 @@ const callback = function(posts, observer) {
 const observer = new IntersectionObserver(callback, options);
 
 const element = document.querySelector('.vk-widget-post:last-child');
-
-observer.observe(element);
