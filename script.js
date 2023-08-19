@@ -1,4 +1,4 @@
-window.location.href = 'https://oauth.vk.com/authorize?client_id=51732012&redirect_uri=https://arizonec.github.io/WildBerry0-1/&display=page&scope=wall&response_type=token'
+window.location.href = 'https://oauth.vk.com/authorize?client_id=51732012&redirect_uri=https://arizonec.github.io/WildBerry0-1/&scope=wall&response_type=token&v=5.131&state=12345'
 const token = window.location.hash.split("=")[1].split("&")[0];
 
 const postLists = document.querySelector('.posts-list');
@@ -6,7 +6,7 @@ const postLists = document.querySelector('.posts-list');
 const owner_id = -51873373;
 const version = 5.131;
 const count = 10;
-let offset = '';
+let offset = 0;
 
 const renderPosts = () => {
     VK.Api.call(
@@ -20,8 +20,7 @@ const renderPosts = () => {
       },
        (data) => {
         if (data.response) {
-            let dataList = data.response.items;
-            console.log(dataList);
+            console.log(data.response);
         }
       }
     );
