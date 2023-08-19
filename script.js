@@ -1,5 +1,8 @@
 // window.location.href = 'https://!oauth.vk.com/authorize?client_id=51732152&display=page&redirect_uri=https://!arizonec.github.io/WildBerry0-1/&scope=wall&response_type=token&v=5.131&state=123456'
 const token = window.location.hash.split("=")[1].split("&")[0];
+const element = document.querySelector('.vk-widget-post:last-child');
+const loader = document.querySelector('.loader');
+
 
 //! Установим области и переменные для работы виджета
 const widget = document.querySelector('.vk-widget'); //! нашёл блок виджета
@@ -46,7 +49,6 @@ function loadPosts() { //! объявляем функцию загрузки п
 
       posts = posts.concat(newPosts); //! добавляем посты в массив для кэширования
       offset += count; //! увеличиваем смещение //! Устанавливаем слежку за последним элементом
-      observer.observe(element);
     }
   });
 }
@@ -74,5 +76,5 @@ const callback = function(posts, observer) {
 }
 
 const observer = new IntersectionObserver(callback, options);
+observer.observe(loader);
 
-const element = document.querySelector('.vk-widget-post:last-child');
