@@ -1,32 +1,41 @@
-
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    padding: 100px 0;
-}
-
-.widget {
+.vk-widget {
     width: 50vw;
     height: 80vh;
-    border: 1px solid gray;
+    border: 1px solid #ccc;
     overflow: hidden;
     position: relative;
     margin: 30px 0px 0px 30px;
     overflow-y: scroll;
-    padding: 10px;
-}
-.posts-list {
+  }
+  
+  .vk-widget-posts {
     list-style: none;
-    background-color: aqua;
     margin: 0;
     padding: 0;
     position: absolute;
     top: 0;
-    border: 1px solid gray;
     left: 0;
     width: 100%;
     height: 100%;
-}
+  }
+  
+  .vk-widget-post {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .vk-widget-post-title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .vk-widget-post-date {
+    font-size: 14px;
+    color: #999;
+    margin-inline: auto;
+  }
+
+  .ImgAll {
+    width: 100%;
+    object-fit: cover;
+  }
