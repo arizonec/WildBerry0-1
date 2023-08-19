@@ -51,22 +51,13 @@ function loadPosts() { //! объявляем функцию загрузки п
   });
 }
 
-let observerOptions = {
-    // root: document.querySelector('.vk-widget-post:last-child'),
-    rootMargin: '0px',
-    threshold: 0.2, 
-}
-
-const observerCallback = (posts) => {
-    if(posts[0].isIntersecting) {
-        loadPosts();
-    }
-}
-
-const observer = new IntersectionObserver(
-    observerCallback, 
-    observerOptions
-);
+const observer = new IntersectionObserver(posts => {
+    posts.forEach(post => {
+        if(post.isIntersecting) {
+            loadPosts();
+        }
+    })
+});
 
 
 loadPosts();
