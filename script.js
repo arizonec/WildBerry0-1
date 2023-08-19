@@ -12,8 +12,8 @@ function loadPosts() { //! объявляем функцию загрузки п
   const count = 10; //! количество постов для загрузки
 
   VK.Api.call('wall.get', { //! запрос использует ключевые слова VK.Api.call для вызова метода получения постов первый аргумент это метод вызова второй параметры
-    owner_id: -119334888,
-    domain: 'nisnom', 
+    owner_id: -41152133,
+    domain: 'spacex', 
     count: count,
     offset: offset,
     access_token: token,
