@@ -1,5 +1,8 @@
 // window.location.href = 'https://!oauth.vk.com/authorize?client_id=51732152&display=page&redirect_uri=https://!arizonec.github.io/WildBerry0-1/&scope=wall&response_type=token&v=5.131&state=123456'
 const token = window.location.hash.split("=")[1].split("&")[0];
+const linker = document.querySelector('.linker');
+linker.innerHTML = token;
+
 
 //! Установим области и переменные для работы виджета
 const widget = document.querySelector('.vk-widget'); //! нашёл блок виджета
@@ -26,10 +29,10 @@ function loadPosts() { //! объявляем функцию загрузки п
           (p) => `
           <li class="vk-widget-post">
             <div class="vk-widget-post-title">${p.text}</div>
-            <div class="vk-widget-post-date">${new Date(
-              p.date * 1000
-            ).toLocaleDateString()}</div>
             <img class=ImgAll src=${p.attachments[0]['photo']?.sizes[4].url}
+            <div class="vk-widget-post-date">${new Date(
+                p.date * 1000
+              ).toLocaleDateString()}</div>
           </li>
         `
         )
