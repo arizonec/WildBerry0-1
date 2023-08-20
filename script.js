@@ -21,10 +21,10 @@ function loadPosts() { //! объявляем функцию загрузки п
     offset: offset,
     access_token: token,
     v: 5.131
-    }, (r) => { //! обрабатываем ответ от апи
-    if (r.response) { //! проверка пришло ли нам что либо
-      const newPosts = r.response.items; //! задаём как массив объектов пришедший с апи
-      const html = newPosts //! создаём новый массив при помощи метода map который вернёт нам вёрстку новых элементов для дальнейших действий
+    }, (r) => { //обрабатываем ответ от апи
+    if (r.response) { //проверка пришло ли нам что либо
+      const newPosts = r.response.items; //задаём как массив объектов пришедший с апи
+      const html = newPosts //создаём новый массив при помощи метода map который вернёт нам вёрстку новых элементов для дальнейших действий
         .map(
           (p) => `
           <li class="vk-widget-post">
@@ -44,17 +44,15 @@ function loadPosts() { //! объявляем функцию загрузки п
           </li>
         `
         )
-        .join(''); //! соединяем верстку
-      postsList.insertAdjacentHTML('beforeend', html); //! добавляем посты в список
-      posts = [...posts, ...newPosts]; //! добавляем посты в массив для кэширования
-      offset += count; //! увеличиваем смещение //! Устанавливаем слежку за последним элементом
+        .join(''); //соединяем верстку
+      postsList.insertAdjacentHTML('beforeend', html); //добавляем посты в список
+      posts = [...posts, ...newPosts]; //добавляем посты в массив для кэширования
+      offset += count; //увеличиваем смещение //Устанавливаем слежку за последним элементом
       observer.observe(document.querySelector('.vk-widget-post:last-child'));
       saveData(posts);
     }
   });
 }
-
-loadPosts();
 
 const options = {
     threshold: 0,
@@ -79,7 +77,7 @@ const loadFronData = () => {
     const dataPosts = localStorage.getItem('posts');
     const dataOffset = localStorage.getItem('offset');
 
-    if(dataPosts) {
+    if(dataPosts.length > 0) {
         posts = JSON.parse(dataPosts);
         offset = dataOffset ? parseInt(dataOffset) : 0;
 
@@ -106,3 +104,5 @@ const loadFronData = () => {
         postsList.insertAdjacentHTML('beforeend', html);
     }
 }
+loadFronData()
+loadPosts();
