@@ -49,6 +49,7 @@ function loadPosts() { //! объявляем функцию загрузки п
       posts = [...posts, ...newPosts]; //добавляем посты в массив для кэширования
       offset += count; //увеличиваем смещение //Устанавливаем слежку за последним элементом
       observer.observe(document.querySelector('.vk-widget-post:last-child'));
+      saveData(posts);
     }
   });
 }
@@ -110,7 +111,6 @@ function check() {
         loadFronData();
     } else {
         loadPosts();
-        saveData(posts);
     }
 }
 check();
