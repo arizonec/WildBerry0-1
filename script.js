@@ -108,9 +108,9 @@ const loadFronData = () => {
 
 loadPosts();
 
-// if(!localStorage.getItem('isPageLoaded')) {
-//     loadPosts();
-//     localStorage.setItem('isPageLoaded', true);
-// } else {
-//     loadFronData()
-// }
+if(!localStorage.getItem('isPageLoaded')) {
+    loadPosts();
+    localStorage.removeItemItem('isPageLoaded', true);
+} else {
+    loadFronData()
+}
