@@ -49,13 +49,9 @@ function loadPosts() { //! объявляем функцию загрузки п
       posts = [...posts, ...newPosts]; //добавляем посты в массив для кэширования
       offset += count; //увеличиваем смещение //Устанавливаем слежку за последним элементом
       observer.observe(document.querySelector('.vk-widget-post:last-child'));
+      saveData(posts);
     }
   });
-}
-
-const saveData = (posts) => {
-    localStorage.setItem('posts', JSON.stringify(posts));
-    localStorage.setItem('offset', offset);
 }
 
 const options = {
@@ -66,12 +62,16 @@ const callback = function(posts, observer) {
     posts.forEach(post => {
         if(post.isIntersecting) {
             loadPosts();
-            saveData(posts);
         }
     })
 }
 
 const observer = new IntersectionObserver(callback, options);
+
+const saveData = (posts) => {
+    localStorage.setItem('posts', JSON.stringify(posts));
+    localStorage.setItem('offset', offset);
+}
 
 const loadFronData = () => {
     const dataPosts = localStorage.getItem('posts');
@@ -106,5 +106,3 @@ const loadFronData = () => {
 }
 loadFronData()
 loadPosts();
-
-
