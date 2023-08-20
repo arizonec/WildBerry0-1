@@ -113,3 +113,4 @@ function check() {
     }
 }
 saveData(posts);
+check();
