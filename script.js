@@ -108,6 +108,7 @@ function check() {
     posts = JSON.parse(dataPosts);
     if(dataPosts.length > 10) {
         loadFronData();
+        console.log(true)
     } else {
         loadPosts();
     }
