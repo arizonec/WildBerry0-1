@@ -128,7 +128,7 @@ const localStorageSize = () => {
     } else {
         memory.innerHTML = `0 / 5242880`;
         localStorage.remove('posts');
-        localStorage.offset('posts');
+        localStorage.remove('offset');
     }
 }
 
