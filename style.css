@@ -37,7 +37,10 @@ body {
     font-size: 20px;
     font-weight: bold;
     height: 200px;
-    overflow: scroll;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
   }
   
   .vk-widget-post-date {
@@ -55,15 +58,17 @@ body {
 
   .likes {
     margin-right: 10px;
+    color: white;
   }
 
   .ImgAll {
     width: 100%;
     object-fit: cover;
+    color: white;
   }
 
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
