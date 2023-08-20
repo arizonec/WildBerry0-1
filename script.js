@@ -110,7 +110,7 @@ function check() {
         loadFronData();
     } else {
         loadPosts();
+        saveData(posts);
     }
 }
-saveData(posts);
 check();
