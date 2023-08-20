@@ -72,7 +72,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: hsl(211, 57%, 43%;
+    background: hsl(211, 57%, 43%);
     border-radius: 100vw;
 }
 
