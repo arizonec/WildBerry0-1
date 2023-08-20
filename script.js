@@ -127,8 +127,8 @@ const localStorageSize = () => {
         memory.innerHTML = `${totalSize} / 5242880`;
     } else {
         memory.innerHTML = `0 / 5242880`;
-        localStorage.remove('posts');
-        localStorage.remove('offset');
+        posts.splice(0, 300);
+        localStorage.setItem('posts', posts);
     }
 }
 
