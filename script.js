@@ -105,9 +105,12 @@ const loadFronData = () => {
     }
 }
 
-if(!localStorage.getItem('isPageLoaded')) {
-    loadPosts();
-    localStorage.setItem('isPageLoaded', true);
-} else {
-    loadFronData()
-}
+
+loadPosts();
+
+// if(!localStorage.getItem('isPageLoaded')) {
+//     loadPosts();
+//     localStorage.setItem('isPageLoaded', true);
+// } else {
+//     loadFronData()
+// }
