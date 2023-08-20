@@ -102,8 +102,6 @@ const loadFronData = () => {
         ).join('');
         postsList.insertAdjacentHTML('beforeend', html);
         observer.observe(document.querySelector('.vk-widget-post:last-child'));
-        posts = [...posts, ...newPosts];
-        offset += count; 
         saveData(offset, posts);
     }
 }
