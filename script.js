@@ -119,4 +119,13 @@ function check() {
     }
 }
 
+const localStorageSize = () => {
+    dataSize = JSON.stringify(localStorage).length;
+    
+    if(dataSize > 5242880) {
+        localStorage.clear();
+    }
+}
+
 check();
+setInterval(localStorageSize, 2000);
