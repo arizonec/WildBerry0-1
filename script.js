@@ -7,8 +7,8 @@ const loader = document.querySelector('.loader');
 //! Установим области и переменные для работы виджета
 const widget = document.querySelector('.vk-widget'); //! нашёл блок виджета
 const postsList = document.querySelector('.vk-widget-posts'); //! блок постов
-let offset = 0; //! смещение для загрузки следующей партии постов
-let posts = []; //! массив постов для кэширования
+let offset = +localStorage.getItem("offset") ?? 0;
+let posts = JSON.parse(localStorage.getItem("posts")) ?? []; //! массив постов для кэширования
 
 //! Загрузка постов из VK API
 function loadPosts() { //! объявляем функцию загрузки постов
@@ -49,7 +49,7 @@ function loadPosts() { //! объявляем функцию загрузки п
       posts = [...posts, ...newPosts]; //добавляем посты в массив для кэширования
       offset += count; //увеличиваем смещение //Устанавливаем слежку за последним элементом
       observer.observe(document.querySelector('.vk-widget-post:last-child'));
-      saveData(posts);
+      saveData(offset, posts);
     }
   });
 }
@@ -68,49 +68,44 @@ const callback = function(posts, observer) {
 
 const observer = new IntersectionObserver(callback, options);
 
-const saveData = (posts) => {
-    localStorage.setItem('posts', JSON.stringify(posts));
+const saveData = (offset, posts) => {
+    const oldPosts = JSON.parse(localStorage.getItem('posts')) ?? [];
+    const newItems = JSON.stringify([...oldPosts, ...posts]);
+
+
+    localStorage.setItem('posts', newItems);
     localStorage.setItem('offset', offset);
 }
 
-const loadFronData = () => {
-    const dataPosts = localStorage.getItem('posts');
-    const dataOffset = localStorage.getItem('offset');
+// const loadFronData = () => {
+//     const dataPosts = localStorage.getItem('posts');
+//     const dataOffset = localStorage.getItem('offset');
 
-    if(dataPosts) {
-        posts = JSON.parse(dataPosts);
-        offset = dataOffset ? parseInt(dataOffset) : 0;
+//     if(dataPosts) {
+//         posts = JSON.parse(dataPosts);
+//         offset = dataOffset ? parseInt(dataOffset) : 0;
 
-        const html = posts
-        .map(
-            (p) => `
-            <li class="vk-widget-post">
-              <div class="vk-widget-post-title">${p.text}</div>
-              <img class=ImgAll src=${p.attachments[0]['photo']?.sizes[4].url}
-              <div class='vk-widget-statistics'>
-              <div class='likes'>
-              Нравится: ${p.likes.count}
-              </div>
-              <div class='comments'></div>
-              Комментарии: ${p.comments.count}
-              </div>
-              <div class="vk-widget-post-date">${new Date(
-                  p.date * 1000
-                ).toLocaleDateString()}
-              </div>
-            </li>
-          `
-        ).join('');
-        postsList.insertAdjacentHTML('beforeend', html);
-    }
-}
-function check() {
-    const dataPosts = localStorage.getItem('posts');
-    const posts = JSON.parse(dataPosts);
-    if (posts && posts.length !== 0) {
-        loadFronData();
-    } else {
-        loadPosts();
-    }
-}
-check();
+//         const html = posts
+//         .map(
+//             (p) => `
+//             <li class="vk-widget-post">
+//               <div class="vk-widget-post-title">${p.text}</div>
+//               <img class=ImgAll src=${p.attachments[0]['photo']?.sizes[4].url}
+//               <div class='vk-widget-statistics'>
+//               <div class='likes'>
+//               Нравится: ${p.likes.count}
+//               </div>
+//               <div class='comments'></div>
+//               Комментарии: ${p.comments.count}
+//               </div>
+//               <div class="vk-widget-post-date">${new Date(
+//                   p.date * 1000
+//                 ).toLocaleDateString()}
+//               </div>
+//             </li>
+//           `
+//         ).join('');
+//         postsList.insertAdjacentHTML('beforeend', html);
+//     }
+// }
+loadPosts();
