@@ -97,8 +97,8 @@ body {
     position: absolute;
     right: 0%;
     bottom: 0%;
-    width: 100px;
+    width: 200px;
     height: 20px;
-    background: rgba(113, 128, 150, 0.5);
+    background:transparent;
     color: white;
 }

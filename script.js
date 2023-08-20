@@ -122,10 +122,15 @@ function check() {
 
 const localStorageSize = () => {
     let dataSize = JSON.stringify(localStorage).length;
-    memory.innerHTML = `${5242880 - dataSize} / 5242880`;
+    if(dataSize > 0) {
+        memory.innerHTML = `${5242880 - dataSize} / 5242880`;
+    } else {
+        memory.innerHTML = `0 / 5242880`;
+    }
     
     if(dataSize > 5242880) {
-        localStorage.clear();
+        localStorage.remove('posts');
+        localStorage.offset('posts');
     }
 }
 
