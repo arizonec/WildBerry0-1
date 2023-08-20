@@ -61,3 +61,21 @@ body {
     width: 100%;
     object-fit: cover;
   }
+
+::-webkit-scrollbar {
+    width: 2em;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    margin-block: .5em;
+}
+
+::-webkit-scrollbar-thumb {
+    background: hsl(211, 57%, 43% / 1);
+    border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb :hover {
+    background: hsl(211, 57%, 23% / 1);
+}
