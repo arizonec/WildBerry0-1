@@ -106,9 +106,8 @@ const loadFronData = () => {
 function check() {
     const dataPosts = localStorage.getItem('posts');
     posts = JSON.parse(dataPosts);
-    if(dataPosts.length > 10) {
+    if(dataPosts.length !== 0) {
         loadFronData();
-        console.log(true)
     } else {
         loadPosts();
     }
