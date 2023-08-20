@@ -127,11 +127,36 @@ const localStorageSize = () => {
         memory.innerHTML = `${totalSize} / 5242880`;
     } else {
         memory.innerHTML = `0 / 5242880`;
-        posts.splice(0, 300);
-        const oldPosts = JSON.parse(localStorage.getItem('posts')) ?? [];
-        localStorage.setItem('posts', oldPosts);
+        const data = JSON.parse(localStorage.getItem("posts"));
+        const halfData = Math.ceil(data.length / 2);
+        data.splice(0, halfData);
+        localStorage.setItem("posts", JSON.stringify(data));
     }
 }
 
 check();
 setInterval(localStorageSize, 2000);
+
+
+Чтобы удалить половину элементов из массива в localStorage, вам нужно выполнить следующие шаги:
+
+1. Получите массив из localStorage с помощью метода `getItem()`.
+2. Вычислите индекс, с которого нужно удалить элементы, используя метод `Math.ceil()` для округления вверх.
+3. Используйте метод `splice()` для удаления элементов из массива.
+4. Сохраните обновленный массив обратно в localStorage с помощью метода `setItem()`.
+
+Вот пример:
+
+javascript
+// Получить массив из localStorage
+const data = JSON.parse(localStorage.getItem("myArray"));
+
+// Вычислить индекс, с которого нужно удалить элементы
+const halfIndex = Math.ceil(data.length / 2);
+
+// Удалить элементы из массива
+data.splice(halfIndex);
+
+// Сохранить обновленный массив в localStorage
+localStorage.setItem("myArray", JSON.stringify(data));
+Обратите внимание, что в примере предполагается, что массив хранится в localStorage под ключом "myArray". Вы также можете изменить ключ в соответствии с вашими потребностями.
