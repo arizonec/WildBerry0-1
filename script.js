@@ -49,7 +49,6 @@ function loadPosts() { //! объявляем функцию загрузки п
       posts = [...posts, ...newPosts]; //добавляем посты в массив для кэширования
       offset += count; //увеличиваем смещение //Устанавливаем слежку за последним элементом
       observer.observe(document.querySelector('.vk-widget-post:last-child'));
-      saveData(posts);
     }
   });
 }
@@ -77,7 +76,7 @@ const loadFronData = () => {
     const dataPosts = localStorage.getItem('posts');
     const dataOffset = localStorage.getItem('offset');
 
-    if(dataPosts.length > 0) {
+    if(dataPosts) {
         posts = JSON.parse(dataPosts);
         offset = dataOffset ? parseInt(dataOffset) : 0;
 
@@ -104,14 +103,13 @@ const loadFronData = () => {
         postsList.insertAdjacentHTML('beforeend', html);
     }
 }
-
-
-loadPosts();
-localStorage.removeItem('isPageLoaded');
-// if(!localStorage.getItem('isPageLoaded')) {
-//     loadPosts();
-//     localStorage.removeItemItem('isPageLoaded', true);
-// } else {
-//     loadFronData()
-    
-// }
+function check() {
+    const dataPosts = localStorage.getItem('posts');
+    posts = JSON.parse(dataPosts);
+    if(posts.length > 0) {
+        loadFronData();
+    } else {
+        loadPosts();
+    }
+}
+saveData(posts);
