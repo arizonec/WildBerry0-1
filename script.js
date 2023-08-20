@@ -121,7 +121,7 @@ function check() {
 }
 
 const localStorageSize = () => {
-    dataSize = JSON.stringify(localStorage).length;
+    let dataSize = JSON.stringify(localStorage).length;
     memory.innerHTML = `${5242880 - dataSize} / 5242880`;
     
     if(dataSize > 5242880) {
