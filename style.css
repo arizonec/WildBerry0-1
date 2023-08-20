@@ -72,10 +72,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: hsl(211, 57%, 43% / 1);
+    background: hsl(211, 57%, 43%;
     border-radius: 100vw;
 }
 
 ::-webkit-scrollbar-thumb :hover {
-    background: hsl(211, 57%, 23% / 1);
+    background: hsl(211, 57%, 23%);
 }
