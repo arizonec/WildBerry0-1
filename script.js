@@ -78,8 +78,13 @@ const saveData = (offset, posts) => {
 }
 
 const loadFronData = () => {
+    const dataPosts = localStorage.getItem('posts');
+    const dataOffset = localStorage.getItem('offset');
 
     if(dataPosts) {
+        posts = JSON.parse(dataPosts);
+        offset = dataOffset ? parseInt(dataOffset) : 0;
+
         const html = posts
         .map(
             (p) => `
