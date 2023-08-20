@@ -136,27 +136,3 @@ const localStorageSize = () => {
 
 check();
 setInterval(localStorageSize, 2000);
-
-
-Чтобы удалить половину элементов из массива в localStorage, вам нужно выполнить следующие шаги:
-
-1. Получите массив из localStorage с помощью метода `getItem()`.
-2. Вычислите индекс, с которого нужно удалить элементы, используя метод `Math.ceil()` для округления вверх.
-3. Используйте метод `splice()` для удаления элементов из массива.
-4. Сохраните обновленный массив обратно в localStorage с помощью метода `setItem()`.
-
-Вот пример:
-
-javascript
-// Получить массив из localStorage
-const data = JSON.parse(localStorage.getItem("myArray"));
-
-// Вычислить индекс, с которого нужно удалить элементы
-const halfIndex = Math.ceil(data.length / 2);
-
-// Удалить элементы из массива
-data.splice(halfIndex);
-
-// Сохранить обновленный массив в localStorage
-localStorage.setItem("myArray", JSON.stringify(data));
-Обратите внимание, что в примере предполагается, что массив хранится в localStorage под ключом "myArray". Вы также можете изменить ключ в соответствии с вашими потребностями.
