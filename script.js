@@ -107,7 +107,7 @@ function check() {
     const dataPosts = localStorage.getItem('posts');
     posts = JSON.parse(dataPosts);
     if(dataPosts.length !== 0) {
-        loadFronData();
+        loadPosts();
     } else {
         loadPosts();
     }
