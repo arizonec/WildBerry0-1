@@ -46,7 +46,7 @@ function loadPosts() { //! объявляем функцию загрузки п
         )
         .join(''); //соединяем верстку
       postsList.insertAdjacentHTML('beforeend', html); //добавляем посты в список
-      posts = newPosts; //добавляем посты в массив для кэширования
+      posts = [...posts, ...newPosts]; //добавляем посты в массив для кэширования
       offset += count; //увеличиваем смещение //Устанавливаем слежку за последним элементом
       observer.observe(document.querySelector('.vk-widget-post:last-child'));
       saveData(offset, posts);
