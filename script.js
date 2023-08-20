@@ -46,7 +46,7 @@ function loadPosts() { //! объявляем функцию загрузки п
         )
         .join(''); //соединяем верстку
       postsList.insertAdjacentHTML('beforeend', html); //добавляем посты в список
-      posts = [...posts, ...newPosts]; //добавляем посты в массив для кэширования
+      posts = newPosts; //добавляем посты в массив для кэширования
       offset += count; //увеличиваем смещение //Устанавливаем слежку за последним элементом
       observer.observe(document.querySelector('.vk-widget-post:last-child'));
       saveData(offset, posts);
@@ -81,7 +81,7 @@ const loadFronData = () => {
     const dataPosts = localStorage.getItem('posts');
     const dataOffset = localStorage.getItem('offset');
 
-    if(dataPosts) {
+    if(dataPosts && dataPosts.length !== 0) {
         posts = JSON.parse(dataPosts);
         offset = dataOffset ? parseInt(dataOffset) : 0;
 
