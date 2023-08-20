@@ -53,6 +53,11 @@ function loadPosts() { //! объявляем функцию загрузки п
   });
 }
 
+const saveData = (posts) => {
+    localStorage.setItem('posts', JSON.stringify(posts));
+    localStorage.setItem('offset', offset);
+}
+
 const options = {
     threshold: 0,
 }
@@ -61,16 +66,12 @@ const callback = function(posts, observer) {
     posts.forEach(post => {
         if(post.isIntersecting) {
             loadPosts();
+            saveData(posts);
         }
     })
 }
 
 const observer = new IntersectionObserver(callback, options);
-
-const saveData = (posts) => {
-    localStorage.setItem('posts', JSON.stringify(posts));
-    localStorage.setItem('offset', offset);
-}
 
 const loadFronData = () => {
     const dataPosts = localStorage.getItem('posts');
@@ -105,6 +106,5 @@ const loadFronData = () => {
 }
 loadFronData()
 loadPosts();
-saveData(posts);
 
 
