@@ -62,6 +62,7 @@ const callback = function(posts, observer) {
         if(post.isIntersecting) {
             loadPosts();
             saveData(posts);
+        
         }
     })
 }
