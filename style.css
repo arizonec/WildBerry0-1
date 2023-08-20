@@ -4,6 +4,7 @@ body {
     align-items: center;
     position: relative;
     justify-content: center;
+    font-family: 'VT323', monospace;
 }
 .vk-widget {
     width: 50vw;
