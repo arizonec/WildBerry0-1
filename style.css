@@ -1,5 +1,5 @@
 body {
-    background-color: gainsboro;
+    background-color: black;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,18 +23,18 @@ body {
     padding: 0;
     left: 0;
     top: 0;
-    border: 1px solid gray;
     width: 100%;
     height: 100%;
   }
   
   .vk-widget-post {
-    background: white;
+    background: black;
     padding: 10px;
     margin-bottom: 10px;
   }
   
   .vk-widget-post-title {
+    color: white;
     font-size: 20px;
     font-weight: bold;
     height: 200px;
@@ -43,7 +43,7 @@ body {
   
   .vk-widget-post-date {
     font-size: 14px;
-    color: #999;
+    color: white;
     margin-inline: auto;
     margin-bottom: 5px;
   }
@@ -51,6 +51,7 @@ body {
   .vk-widget-statistics {
     padding: 2px;
     display: flex;
+    color: white;
   }
 
   .likes {
