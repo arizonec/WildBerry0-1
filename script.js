@@ -70,8 +70,40 @@ const callback = function(posts, observer) {
 const observer = new IntersectionObserver(callback, options);
 
 const saveData = () => {
-    localStorage.setItem('posts', posts);
+    localStorage.setItem('posts', JSON.stringify(posts));
     localStorage.setItem('offset', offset);
+}
+
+const loadFronData = () => {
+    const dataPosts = localStorage.getItem('posts');
+    const dataOffset = localStorage.getItem('offset');
+
+    if(dataPosts) {
+        posts = JSON.parse(dataPosts);
+        offset = dataOffset ? parseInt(dataOffset) : 0;
+
+        const html = posts
+        .map(
+            (p) => `
+            <li class="vk-widget-post">
+              <div class="vk-widget-post-title">${p.text}</div>
+              <img class=ImgAll src=${p.attachments[0]['photo']?.sizes[4].url}
+              <div class='vk-widget-statistics'>
+              <div class='likes'>
+              Нравится: ${p.likes.count}
+              </div>
+              <div class='comments'></div>
+              Комментарии: ${p.comments.count}
+              </div>
+              <div class="vk-widget-post-date">${new Date(
+                  p.date * 1000
+                ).toLocaleDateString()}
+              </div>
+            </li>
+          `
+        ).join('');
+        postsList.insertAdjacentHTML('beforeend', html);
+    }
 }
 
 saveData();
