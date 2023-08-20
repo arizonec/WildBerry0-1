@@ -2,6 +2,7 @@
 const token = window.location.hash.split("=")[1].split("&")[0];
 const element = document.querySelector('.vk-widget-post:last-child');
 const loader = document.querySelector('.loader');
+const memory = document.querySelector('.memory__counter');
 
 
 //! Установим области и переменные для работы виджета
@@ -121,6 +122,7 @@ function check() {
 
 const localStorageSize = () => {
     dataSize = JSON.stringify(localStorage).length;
+    memory.innerHTML = `${5242880 - dataSize} / 5242880`;
     
     if(dataSize > 5242880) {
         localStorage.clear();

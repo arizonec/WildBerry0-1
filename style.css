@@ -2,6 +2,7 @@ body {
     background-color: black;
     display: flex;
     align-items: center;
+    position: relative;
     justify-content: center;
 }
 .vk-widget {
@@ -61,10 +62,13 @@ body {
     color: white;
   }
 
+  .comments {
+    color: white;
+  }
+
   .ImgAll {
     width: 100%;
     object-fit: cover;
-    color: white;
   }
 
 ::-webkit-scrollbar {
@@ -86,4 +90,14 @@ body {
   border-color: #7c7c7c;
   background: linear-gradient(top, rgba(38, 38, 38, 0.8), #e6e6e6 25%, #ffffff 38%, #c5c5c5 63%, #f7f7f7 87%, rgba(38, 38, 38, 0.8));
   background: -webkit-linear-gradient(top, rgba(38, 38, 38, 0.5), #e6e6e6 25%, #ffffff 38%, rgba(0, 0, 0, 0.25)  63%, #e6e6e6 87%, rgba(38, 38, 38, 0.4));
+}
+
+.memory__counter{
+    position: absolute;
+    right: 10%;
+    bottom: 10%;
+    width: 100px;
+    height: 20px;
+    background: transparent;
+    columns: white;
 }
