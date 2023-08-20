@@ -78,13 +78,8 @@ const saveData = (offset, posts) => {
 }
 
 const loadFronData = () => {
-    const dataPosts = localStorage.getItem('posts');
-    const dataOffset = localStorage.getItem('offset');
 
     if(dataPosts) {
-        posts = JSON.parse(dataPosts);
-        offset = dataOffset ? parseInt(dataOffset) : 0;
-
         const html = posts
         .map(
             (p) => `
@@ -107,6 +102,9 @@ const loadFronData = () => {
         ).join('');
         postsList.insertAdjacentHTML('beforeend', html);
         observer.observe(document.querySelector('.vk-widget-post:last-child'));
+        posts = [...posts, ...newPosts];
+        offset += count; 
+        saveData(offset, posts);
     }
 }
 
@@ -120,3 +118,4 @@ function check() {
 }
 
 check();
+
