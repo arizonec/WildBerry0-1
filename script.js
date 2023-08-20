@@ -128,7 +128,8 @@ const localStorageSize = () => {
     } else {
         memory.innerHTML = `0 / 5242880`;
         posts.splice(0, 300);
-        localStorage.setItem('posts', posts);
+        const oldPosts = JSON.parse(localStorage.getItem('posts')) ?? [];
+        localStorage.setItem('posts', oldPosts);
     }
 }
 
