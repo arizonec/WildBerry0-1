@@ -107,7 +107,6 @@ const loadFronData = () => {
         ).join('');
         postsList.insertAdjacentHTML('beforeend', html);
         observer.observe(document.querySelector('.vk-widget-post:last-child'));
-        saveData(offset, posts);
     }
 }
 
@@ -121,4 +120,3 @@ function check() {
 }
 
 check();
-
