@@ -104,12 +104,10 @@ const loadFronData = () => {
         postsList.insertAdjacentHTML('beforeend', html);
     }
 }
-document.addEventListener('DOMContentLoaded', () => {
-    const posts = localStorage.getItem('posts', JSON.stringify(posts))
-    const parsed = JSON.stringify(posts);
-    if(posts.length > 0) {
-        loadFronData()
-    } else {
-        loadPosts();
-    }
-})
+
+if(!localStorage.getItem('isPageLoaded')) {
+    loadPosts();
+    localStorage.setItem('isPageLoaded', true);
+} else {
+    loadFronData()
+}
