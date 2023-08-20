@@ -61,8 +61,6 @@ const callback = function(posts, observer) {
     posts.forEach(post => {
         if(post.isIntersecting) {
             loadPosts();
-            saveData(posts);
-        
         }
     })
 }
@@ -107,4 +105,6 @@ const loadFronData = () => {
 }
 loadFronData()
 loadPosts();
+saveData(posts);
+
 
