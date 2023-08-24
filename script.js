@@ -1,4 +1,4 @@
-// window.location.href = 'https://!oauth.vk.com/authorize?client_id=51732152&display=page&redirect_uri=https://!arizonec.github.io/WildBerry0-1/&scope=wall&response_type=token&v=5.131&state=123456'
+// window.location.href = 'https://oauth.vk.com/authorize?client_id=51732152&display=page&redirect_uri=https://arizonec.github.io/WildBerry0-1/&scope=wall&response_type=token&v=5.131&state=123456'
 const token = window.location.hash.split("=")[1].split("&")[0];
 const element = document.querySelector('.vk-widget-post:last-child');
 const loader = document.querySelector('.loader');
@@ -44,7 +44,7 @@ function loadPosts() {
           </li>
         `
                 )
-                .join(''); //соединяем верстку
+                .join('');
             postsList.insertAdjacentHTML('beforeend', html);
             posts = [...posts, ...newPosts];
             offset += count;
