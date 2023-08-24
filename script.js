@@ -5,29 +5,28 @@ const loader = document.querySelector('.loader');
 const memory = document.querySelector('.memory__counter');
 
 
-//! Установим области и переменные для работы виджета
-const widget = document.querySelector('.vk-widget'); //! нашёл блок виджета
-const postsList = document.querySelector('.vk-widget-posts'); //! блок постов
+
+const widget = document.querySelector('.vk-widget');
+const postsList = document.querySelector('.vk-widget-posts');
 let offset = +localStorage.getItem("offset") ?? 0;
-let posts = JSON.parse(localStorage.getItem("posts")) ?? []; //! массив постов для кэширования
+let posts = JSON.parse(localStorage.getItem("posts")) ?? [];
 
-//! Загрузка постов из VK API
-function loadPosts() { //! объявляем функцию загрузки постов
-    const count = 10; //! количество постов для загрузки
+function loadPosts() {
+    const count = 10;
 
-    VK.Api.call('wall.get', { //! запрос использует ключевые слова VK.Api.call для вызова метода получения постов первый аргумент это метод вызова второй параметры
+    VK.Api.call('wall.get', {
         owner_id: -41152133,
         domain: 'spacex',
         count: count,
-    offset: offset,
-    access_token: token,
-    v: 5.131
-    }, (r) => { //обрабатываем ответ от апи
-    if (r.response) { //проверка пришло ли нам что либо
-      const newPosts = r.response.items; //задаём как массив объектов пришедший с апи
-      const html = newPosts //создаём новый массив при помощи метода map который вернёт нам вёрстку новых элементов для дальнейших действий
-        .map(
-          (p) => `
+        offset: offset,
+        access_token: token,
+        v: 5.131
+    }, (r) => {
+        if (r.response) {
+            const newPosts = r.response.items;
+            const html = newPosts
+                .map(
+                    (p) => `
           <li class="vk-widget-post">
             <div class="vk-widget-post-title">${p.text}</div>
             <img class=ImgAll src=${p.attachments[0]['photo']?.sizes[4].url}
@@ -39,29 +38,29 @@ function loadPosts() { //! объявляем функцию загрузки п
             Комментарии: ${p.comments.count}
             </div>
             <div class="vk-widget-post-date">${new Date(
-                p.date * 1000
-              ).toLocaleDateString()}
+                        p.date * 1000
+                    ).toLocaleDateString()}
             </div>
           </li>
         `
-        )
-        .join(''); //соединяем верстку
-      postsList.insertAdjacentHTML('beforeend', html); //добавляем посты в список
-      posts = [...posts, ...newPosts]; //добавляем посты в массив для кэширования
-      offset += count; //увеличиваем смещение //Устанавливаем слежку за последним элементом
-      observer.observe(document.querySelector('.vk-widget-post:last-child'));
-      saveData(offset, posts);
-    }
-  });
+                )
+                .join(''); //соединяем верстку
+            postsList.insertAdjacentHTML('beforeend', html);
+            posts = [...posts, ...newPosts];
+            offset += count;
+            observer.observe(document.querySelector('.vk-widget-post:last-child'));
+            saveData(offset, posts);
+        }
+    });
 }
 
 const options = {
     threshold: 0,
 }
 
-const callback = function(posts, observer) {
+const callback = function (posts, observer) {
     posts.forEach(post => {
-        if(post.isIntersecting) {
+        if (post.isIntersecting) {
             loadPosts();
         }
     })
@@ -82,13 +81,13 @@ const loadFronData = () => {
     const dataPosts = localStorage.getItem('posts');
     const dataOffset = localStorage.getItem('offset');
 
-    if(dataPosts && dataPosts.length !== 0) {
+    if (dataPosts && dataPosts.length !== 0) {
         posts = JSON.parse(dataPosts);
         offset = dataOffset ? parseInt(dataOffset) : 0;
 
         const html = posts
-        .map(
-            (p) => `
+            .map(
+                (p) => `
             <li class="vk-widget-post">
               <div class="vk-widget-post-title">${p.text}</div>
               <img class=ImgAll src=${p.attachments[0]['photo']?.sizes[4].url}
@@ -100,12 +99,12 @@ const loadFronData = () => {
               Комментарии: ${p.comments.count}
               </div>
               <div class="vk-widget-post-date">${new Date(
-                  p.date * 1000
+                    p.date * 1000
                 ).toLocaleDateString()}
               </div>
             </li>
           `
-        ).join('');
+            ).join('');
         postsList.insertAdjacentHTML('beforeend', html);
         observer.observe(document.querySelector('.vk-widget-post:last-child'));
     }
@@ -123,7 +122,7 @@ function check() {
 const localStorageSize = () => {
     let dataSize = JSON.stringify(localStorage).length;
     let totalSize = 5242880 - dataSize
-    if(totalSize > 0) {
+    if (totalSize > 0) {
         memory.innerHTML = `${totalSize} / 5242880`;
     } else {
         memory.innerHTML = `0 / 5242880`;
