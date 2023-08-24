@@ -70,10 +70,10 @@ const observer = new IntersectionObserver(callback, options);
 
 const saveData = (offset, posts) => {
     const oldPosts = JSON.parse(localStorage.getItem('posts')) ?? [];
-    const newItems = JSON.stringify([...oldPosts, ...posts]);
+    const newPosts = JSON.stringify([...oldPosts, ...posts]);
 
 
-    localStorage.setItem('posts', newItems);
+    localStorage.setItem('posts', newPosts);
     localStorage.setItem('offset', offset);
 }
 
