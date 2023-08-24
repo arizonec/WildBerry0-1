@@ -29,7 +29,7 @@ function loadPosts() {
                     (p) => `
           <li class="vk-widget-post">
             <div class="vk-widget-post-title">${p.text}</div>
-            <img class=ImgAll src=${p.attachments[0]['photo'] ? p.attachments[0]['photo']?.sizes[4].url : p.attachments[0]['video']?.image[4].url}/>
+            <img class=ImgAll src=${p.attachments[0]['photo']?.sizes[4].url}/>
             <div class='vk-widget-statistics'>
             <div class='likes'>
             Нравится: ${p.likes.count}
@@ -90,7 +90,7 @@ const loadFronData = () => {
                 (p) => `
             <li class="vk-widget-post">
               <div class="vk-widget-post-title">${p.text}</div>
-              <img class=ImgAll src=${p.attachments[0]['photo'] ? p.attachments[0]['photo']?.sizes[4].url : p.attachments[0]['video']?.image[4].url}/>
+              <img class=ImgAll src=${p.attachments[0]['photo']?.sizes[4].url}/>
               <div class='vk-widget-statistics'>
               <div class='likes'>
               Нравится: ${p.likes.count}
