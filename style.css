@@ -6,7 +6,7 @@ body {
     justify-content: center;
     font-family: 'VT323', monospace;
 }
-.vk-widget {
+.widget {
     width: 50vw;
     height: 80vh;
     overflow: hidden;
@@ -17,7 +17,7 @@ body {
     padding: 10px;
   }
   
-  .vk-widget-posts {
+  .widget-posts {
     list-style: none;
     position: absolute;
     margin: 0;
@@ -28,13 +28,13 @@ body {
     height: 100%;
   }
   
-  .vk-widget-post {
+  .widget-post {
     background: black;
     padding: 10px;
     margin-bottom: 10px;
   }
   
-  .vk-widget-post-title {
+  .widget-post-title {
     color: white;
     font-size: 20px;
     font-weight: bold;
@@ -45,14 +45,14 @@ body {
     overflow: hidden;
   }
   
-  .vk-widget-post-date {
+  .widget-post-date {
     font-size: 14px;
     color: white;
     margin-inline: auto;
     margin-bottom: 5px;
   }
 
-  .vk-widget-statistics {
+  .widget-statistics {
     padding: 2px;
     display: flex;
     color: white;

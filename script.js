@@ -1,13 +1,13 @@
 // window.location.href = 'https://oauth.vk.com/authorize?client_id=51732152&display=page&redirect_uri=https://arizonec.github.io/WildBerry0-1/&scope=wall&response_type=token&v=5.131&state=123456'
 const token = window.location.hash.split("=")[1].split("&")[0];
-const element = document.querySelector('.vk-widget-post:last-child');
+const element = document.querySelector('.widget-post:last-child');
 const loader = document.querySelector('.loader');
 const memory = document.querySelector('.memory__counter');
 
 
 
-const widget = document.querySelector('.vk-widget');
-const postsList = document.querySelector('.vk-widget-posts');
+const widget = document.querySelector('.widget');
+const postsList = document.querySelector('.widget-posts');
 let offset = +localStorage.getItem("offset") ?? 0;
 let posts = JSON.parse(localStorage.getItem("posts")) ?? [];
 
@@ -27,17 +27,17 @@ function loadPosts() {
             const html = newPosts
                 .map(
                     (p) => `
-          <li class="vk-widget-post">
-            <div class="vk-widget-post-title">${p.text}</div>
+          <li class="widget-post">
+            <div class="widget-post-title">${p.text}</div>
             <img class=ImgAll src=${p.attachments[0]['photo']?.sizes[4].url}
-            <div class='vk-widget-statistics'>
+            <div class='widget-statistics'>
             <div class='likes'>
             Нравится: ${p.likes.count}
             </div>
             <div class='comments'></div>
             Комментарии: ${p.comments.count}
             </div>
-            <div class="vk-widget-post-date">${new Date(
+            <div class="widget-post-date">${new Date(
                         p.date * 1000
                     ).toLocaleDateString()}
             </div>
@@ -48,7 +48,7 @@ function loadPosts() {
             postsList.insertAdjacentHTML('beforeend', html);
             posts = [...posts, ...newPosts];
             offset += count;
-            observer.observe(document.querySelector('.vk-widget-post:last-child'));
+            observer.observe(document.querySelector('.widget-post:last-child'));
             saveData(offset, posts);
         }
     });
@@ -88,17 +88,17 @@ const loadFronData = () => {
         const html = posts
             .map(
                 (p) => `
-            <li class="vk-widget-post">
-              <div class="vk-widget-post-title">${p.text}</div>
+            <li class="widget-post">
+              <div class="widget-post-title">${p.text}</div>
               <img class=ImgAll src=${p.attachments[0]['photo']?.sizes[4].url}
-              <div class='vk-widget-statistics'>
+              <div class='widget-statistics'>
               <div class='likes'>
               Нравится: ${p.likes.count}
               </div>
               <div class='comments'></div>
               Комментарии: ${p.comments.count}
               </div>
-              <div class="vk-widget-post-date">${new Date(
+              <div class="widget-post-date">${new Date(
                     p.date * 1000
                 ).toLocaleDateString()}
               </div>
@@ -106,7 +106,7 @@ const loadFronData = () => {
           `
             ).join('');
         postsList.insertAdjacentHTML('beforeend', html);
-        observer.observe(document.querySelector('.vk-widget-post:last-child'));
+        observer.observe(document.querySelector('.widget-post:last-child'));
     }
 }
 
